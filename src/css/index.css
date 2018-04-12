@@ -1,3 +1,9 @@
 body{
-  background:red;
+  background-color: orange;
+}
+.icon{
+  display: block;
+  width:100px;
+  height:100px;
+  background: url(../img/icons.png) 0 0 no-repeat;
 }
