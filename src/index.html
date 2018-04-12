@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome = 1">
+
+    <title>车享新车选车助手</title>
+    <meta name="keywords" content="车享新车,选车助手" />
+    <meta name="description" content="车享新车是一站式汽车电商交易平台，厂家直销信誉保障，全网底价买车半价秒杀!线上一口价预定，线下4s店直接提车，贴心服务，轻松购车。" />
+
+    <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="apple-touch-icon-precomposed" href="" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+
+
+    <!-- 公共样式  -->
+   <!-- <link href="css/mobile-reset.css" rel="stylesheet" />
+   <link href="css/base.css" rel="stylesheet" />
+   <link href="css/ECar.popWin.css" rel="stylesheet" >
+   <link href="css/index.css" rel="stylesheet"> -->
+
+    <!-- 公共js -->
+    <!--<script src="js/mobile-base.js"></script>
+    <script src="js/jquery_1_8_3.js"></script>-->
+</head>
+<body>
+    <div class="wrap">
+        <!-- header -->
+        <header class="header">
+    <div class="pri-title">
+        <span class="header-return">
+            <!-- <i class="btn-return"></i> -->
+            <span class="i-text"></span>
+        </span>
+        <strong>选车助手</strong>
+    </div>
+</header>
+        <!-- progress -->
+        <progress max="100" value="0" id="js-progress"></progress>
+<p class="progress-txt">第<span id="js-curcount">1</span>题，共7题</p>
+<script>
+    /*onProgress: function(file, loaded, total) {
+        var percent = Math.round(loaded / total * 100);
+        $("progress").val(percent);
+    }*/
+</script>
+
+        <div class="questions-wrap">
+            <!-- qeustion -->
+            <div class="questions" id="js-questions">
+    <div class="question-item question-item-cxjz">
+        <i class="arr"></i>
+        <p>我是车享局长，爱车测试可以为你量身推荐理想车型</p>
+    </div>
+
+    <!--<div class="question-item question-past">
+        <i class="arr"></i>
+        <p>接下来就是正式的测试咯，只需要5分钟，我们开始吧~</p>
+    </div>
+
+    <div class="question-item">
+        <i class="arr"></i>
+        <p>怎么称呼您？</p>
+    </div>
+
+    <div class="question-item question-answer">
+        <i class="arr"></i>
+        <p>先生</p>
+    </div> -->
+</div>
+        </div>
+        <div class="answer-wrap" id="js-answer">
+            <!-- slider -->
+            <!-- <input class="range-slider" type="hidden" value="7,60"/>
+<script>
+    $(function(){
+        $('.range-slider').jRange({
+            from: 7,
+            to: 60,
+            step: 5,
+            scale: [7, 60],
+            format: '%s',
+            width: 300,
+            showLabels: true,
+            isRange : true,
+            theme:'theme-blue'
+        });
+    });
+</script>-->
+        </div>
+        <form action="result.html" id="js-submit" method="post">
+        </form>
+    </div>
+
+
+    <!--<script src="js/jquery.range.js"></script>
+    <script src="mock/data.js"></script>
+    <script src="js/artTemplate.js"></script>
+    <script src="js/ECar.dialogPrompt.js"></script>
+    <script src="js/ECar.popWin.js"></script>
+    <script src="js/index.js"></script>-->
+
+
+
+    <script type="text/html" id="tmp-gender">
+
+    <div class="answer gender" id="js-answer-{{qId}}" skey="{{qId}}">
+        <div class="qitem-answers">
+            {{if qAnswers}}
+                {{each qAnswers as item i}}
+                    <label class="qitem-label qitem-label{{i+1}}">
+                        <i></i>
+                        <input name="gender" class="radio" type="radio" value="{{item.aValue}}" svalue="{{item.aName}}" skey="{{qId}}"/>{{item.aName}}
+                    </label>
+                {{/each}}
+            {{/if}}
+        </div>
+    </div>
+
+
+</script>
+    <script type="text/html" id="tmp-age">
+
+    <div class="answer age" id="js-answer-{{ qId}}" skey="{{qId}}">
+        <p>年龄<em id="js-range-age">25</em>岁</p>
+        <div class="qitem-answers">
+            <input class="single-slider" type="hidden" value="{{25}}"/>
+        </div>
+        <a href="javascript:;" class="comfirm">确定</a>
+    </div>
+
+</script>
+    <script type="text/html" id="tmp-family-number">
+
+<div class="answer family-number" id="js-answer-{{qId}}" skey="{{qId}}">
+    <div class="qitem-answers">
+        {{if qAnswers}}
+            {{each qAnswers as item i}}
+                <label class="qitem-label qitem-label{{i+1}}">
+                    <i></i>
+                    <input name="familynumber" class="radio" type="radio" value="{{item.aValue}}" svalue="{{item.aName}}" skey="{{qId}}"/>{{item.aName}}
+                </label>
+            {{/each}}
+        {{/if}}
+    </div>
+</div>
+
+</script>
+    <script type="text/html" id="tmp-purpose">
+
+
+<div class="answer purpose" id="js-answer-{{qId}}">
+    <p class="answer-intro">
+        <span class="tit">本题多选</span>
+    </p>
+    <div class="qitem-answers">
+        {{if qAnswers}}
+            {{each qAnswers as item i}}
+                <label class="qitem-label">
+                    <input name="purpose" class="checkbox" type="checkbox" value="{{item.aValue}}" svalue="{{item.aName}}" skey="{{qId}}"/>{{item.aName}}
+                </label>
+            {{/each}}
+        {{/if}}
+    </div>
+    <a href="javascript:;" class="comfirm">确定</a>
+</div>
+
+</script>
+    <script type="text/html" id="tmp-budget">
+
+
+<div class="answer budget" id="js-answer-{{qId}}" skey="{{qId}}">
+    <p>预算<span id="js-range-budget"></span></p>
+    <div class="qitem-answers">
+        <input class="range-slider" type="hidden" value="10, 20"/>
+    </div>
+    <a href="javascript:;" class="comfirm">确定</a>
+</div>
+
+</script>
+
+    <script type="text/html" id="tmp-vel-level">
+
+
+<div class="answer vel-level" id="js-answer-{{qId}}" skey="{{qId}}">
+    <p class="answer-intro">
+        <span class="tit">本题多选</span>
+        <span class="what">什么是两厢、三厢、SUV、MPV<i id="js-vellevel-what"></i></span>
+    </p>
+    <div class="qitem-answers">
+        {{if qAnswers}}
+            {{each qAnswers as item i}}
+                <label class="qitem-label qitem-label{{i}} {{if item.aValue=== 9}}qitem-label-other{{/if}}">
+                    <i></i>
+                    <input name="purpose" class="checkbox" type="checkbox"  value="{{item.aValue}}" svalue="{{item.aName}}" skey="{{qId}}" />{{item.aName}}
+                </label>
+             {{/each}}
+         {{/if}}
+    </div>
+    <a href="javascript:;" class="comfirm">确定</a>
+</div>
+
+</script>
+
+<section id="tmp-vel-level-popwin" class="vellevel-pop pop-moveToRight">
+     <header class="pop-hd">
+            <span class="pop-close js-pop-close"><i></i></span>
+    </header>
+    <div class="pop-body">
+        <ul>
+            <li class="vellevel-pop-item">
+                    <p class="tit">两厢车</p>
+                    <p>驾驶室和后备箱做成同一个厢体，增加车内空间，后备箱空间就有所减少，多用于小型车和紧凑车型</p>
+            </li>
+            <li class="vellevel-pop-item">
+                    <p class="tit">三厢车</p>
+                    <p>三厢式轿车中间高两头低，车身尺寸长，三厢车的发动机舱、乘员舱和行李舱是我完全分开的。</p>
+            </li>
+            <li class="vellevel-pop-item">
+                    <p class="tit">SUV</p>
+                    <p>简单点就是轿车和越野车的结合体，在一定程度上既具有轿车的舒适性，又有越野车的通用性的车型。</p>
+            </li>
+            <li class="vellevel-pop-item">
+                    <p class="tit">MPV</p>
+                    <p>集旅行车宽大乘员空间、轿车的舒适性和厢式货车的功能于一身，可以做7-8人。</p>
+            </li>
+        </ul>
+    </div>
+</section>
+    <script type="text/html" id="tmp-likes">
+
+
+<div class="answer likes" id="js-answer-{{qId}}" skey="{{qId}}">
+    <p class="answer-intro">
+        <span class="tit">本题多选</span>
+    </p>
+    <div class="qitem-answers">
+        {{if qAnswers}}
+            {{each qAnswers as item i}}
+                <label class="qitem-label">
+                    <input name="purpose" class="checkbox" type="checkbox" value="{{item.aValue}}" svalue="{{item.aName}}" skey="{{qId}}"  cntxt="{{item.cnTxt}}" />{{item.aName}}
+                </label>
+            {{/each}}
+        {{/if}}
+    </div>
+    <a href="javascript:;" class="comfirm">确定</a>
+</div>
+
+</script>
+    <div class="loading" id='js-loading'>
+    <div class="loading-cn">
+        <img src="images/car.gif" alt="" class="icon" />
+        <p>根据您的所有回答，局长正在从3224个车型中为您挑选…</p>
+    </div>
+</div>
+</body>
+</html>
